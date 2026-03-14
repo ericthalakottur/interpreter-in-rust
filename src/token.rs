@@ -1,0 +1,41 @@
+#[derive(Debug)]
+pub enum TokenType {
+    LeftParen(u32),
+    RightParen(u32),
+    LeftBrace(u32),
+    RightBrace(u32),
+    Comma(u32),
+    Dot(u32),
+    Minus(u32),
+    Plus(u32),
+    SemiColon(u32),
+    Slash(u32),
+    Star(u32),
+
+    Bang(u32),
+    BangEqual(u32),
+    Equal(u32),
+    EqualEqual(u32),
+    Greater(u32),
+    GreaterEqual(u32),
+    Less(u32),
+    LessEqual(u32),
+
+    Identifier(u32),
+    String(u32, String),
+    Number(u32, f32),
+
+    And(u32),
+    If(u32),
+    Else(u32),
+    Or(u32),
+    Print(u32),
+    Return(u32),
+    True(u32),
+    False(u32),
+    While(u32),
+    For(u32),
+    Var(u32),
+
+    EOF(u32),
+}

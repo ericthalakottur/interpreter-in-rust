@@ -1,6 +1,8 @@
 use std::io::{self, Write};
 use std::{env, fs};
 
+use interpreter_in_rust::scanner::Scanner;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() > 1 {
@@ -10,6 +12,7 @@ fn main() {
         dbg!(contents);
     } else {
         let mut line = String::new();
+        let mut scanner = Scanner::new();
         loop {
             print!("> ");
             let _ = io::stdout().flush();
@@ -21,8 +24,19 @@ fn main() {
             if line == "exit" {
                 break;
             }
+
             dbg!(&line);
+            scanner.scan_tokens(&line);
+
             line.clear();
         }
     }
+}
+
+fn error(line: u8, message: &str) {
+    report(line, "", message);
+}
+
+fn report(line: u8, location: &str, message: &str) {
+    eprintln!("[line {} \"] Error {}: {}", line, location, message);
 }

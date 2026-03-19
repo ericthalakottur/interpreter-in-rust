@@ -21,7 +21,7 @@ pub enum TokenType {
     Less(u32),
     LessEqual(u32),
 
-    Identifier(u32),
+    Identifier(u32, String),
     String(u32, String),
     Number(u32, f32),
 

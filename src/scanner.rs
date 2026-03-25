@@ -1,4 +1,5 @@
 use crate::token::TokenType;
+use crate::utils::is_aplha_numeric;
 
 #[derive(Debug)]
 pub struct Scanner {
@@ -106,8 +107,7 @@ impl Scanner {
                     if !is_keyword_present {
                         let mut j = i + 1;
                         while j < source_list.len()
-                            && (('a' <= source_list[j] && source_list[j] <= 'z')
-                                || ('A' <= source_list[j] && source_list[j] <= 'Z'))
+                            && (is_aplha_numeric(source_list[j]) || source_list[j] == '_')
                         {
                             j += 1
                         }
